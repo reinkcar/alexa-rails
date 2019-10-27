@@ -17,8 +17,14 @@ module Alexa
 
     def render(*args)
       options = args.extract_options!
-      options[:template] = "/app/views/"
-      super(*(args << options))
+      
+      if options[:file] 
+         options[:template] =  options[:file]
+         super(*(args << options.except(:file)))
+      else
+        options[:template] = "/app/views/"
+        super(*(args << options))
+      end
     end
   end
 end
