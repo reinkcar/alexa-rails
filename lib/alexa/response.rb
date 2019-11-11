@@ -1,11 +1,12 @@
 module Alexa
   class Response
-    attr_accessor :intent, :directives
+    attr_accessor :intent, :directives, :user_content
 
     def initialize(intent:, directives: [])
       @intent = intent
       @directives = directives
       @slots_to_not_render_elicitation = []
+      @user_content = {}
     end
 
     def with(template: )
